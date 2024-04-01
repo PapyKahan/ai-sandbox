@@ -14,10 +14,13 @@ services:
     ports:
       - 8080:8080
     environment:
-      - DEBUG=true
-      # ...
+      #- DEBUG=true
+      #- GALLERIES=[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"url":"github:go-skynet/model-gallery/huggingface.yaml","name":"huggingface"}]
+      #- GALLERIES=[{"url":"github:go-skynet/model-gallery/huggingface.yaml","name":"huggingface"}]
+      #- GALLERIES=[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}]
+      - PRELOAD_MODELS=[{"url":"github:go-skynet/model-gallery/stablediffusion.yaml","name":"stablediffusion"},{"url":"github:go-skynet/model-gallery/blob/main/mixtral-Q6.yaml","name":"mixtral"},{"url":"github:go-skynet/model-gallery/whisper-base.yaml","name":"whisper-1"}]
     volumes:
-      - ./models:/build/models:cached
+      - D:\tools\localai\models:/build/models
     # decomment the following piece if running with Nvidia GPUs
     deploy:
       resources:
